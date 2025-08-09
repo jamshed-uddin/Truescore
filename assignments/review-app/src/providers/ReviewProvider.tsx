@@ -11,6 +11,7 @@ import React, {
 import { v4 as uuidv4 } from "uuid";
 
 export interface ReviewContextType {
+  loading: boolean;
   review: ReviewType;
   setReview: React.Dispatch<React.SetStateAction<ReviewType>>;
   reviews: ReviewType[];
@@ -28,7 +29,7 @@ const ReviewProvider = ({ children }: { children: ReactNode }) => {
     content: "",
     rating: 0,
   });
-
+  const [loading, setLoading] = useState(true);
   const [editingReviewId, setEditingReviewId] = useState("");
   const [reviews, setReviews] = useState<ReviewType[]>([]);
 
@@ -38,6 +39,7 @@ const ReviewProvider = ({ children }: { children: ReactNode }) => {
       : [];
 
     setReviews(localReviews);
+    setLoading(false);
   }, []);
 
   useEffect(() => {
@@ -69,6 +71,7 @@ const ReviewProvider = ({ children }: { children: ReactNode }) => {
     setReviews(reviewsLeft);
   };
   const value = {
+    loading,
     review,
     setReview,
     setEditingReviewId,

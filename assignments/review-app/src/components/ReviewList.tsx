@@ -4,13 +4,15 @@ import React from "react";
 import ReviewCard from "./ReviewCard";
 
 const ReviewList = () => {
-  const { reviews } = useReview();
+  const { reviews, loading } = useReview();
   return (
     <div>
-      {reviews.length > 0 ? (
+      {loading ? (
+        <h3>Loading...</h3>
+      ) : reviews.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
           {reviews.map((review) => (
-            <ReviewCard review={review} />
+            <ReviewCard review={review} key={review.id} />
           ))}
         </div>
       ) : (
