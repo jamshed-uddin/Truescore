@@ -1,6 +1,7 @@
 export type ReviewType = {
+  id?: string;
   shopName: string;
-  review: string;
+  content: string;
   rating: number;
-  date: string;
+  date?: string;
 };

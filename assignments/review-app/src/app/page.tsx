@@ -1,10 +1,12 @@
 import ReviewForm from "@/components/ReviewForm";
-import Image from "next/image";
+import ReviewList from "@/components/ReviewList";
 
 export default function Home() {
   return (
     <div>
       <ReviewForm />
+
+      <ReviewList />
     </div>
   );
 }
