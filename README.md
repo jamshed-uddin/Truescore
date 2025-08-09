@@ -44,5 +44,6 @@ npm run dev
 
 - User authentication.
 - Allow only authenticated users to create review.
-- Account for shop
-- Allow shop to reply public reviews
+- Account for shop.
+- Allow shop to reply public reviews.
+- Create server and database integration.
