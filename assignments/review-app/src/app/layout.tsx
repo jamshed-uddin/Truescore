@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased lg:max-w-[100rem] lg:mx-auto mx-2 min-h-screen bg-slate-100 text-slate-800 lg:ml-10 lg:mr-10`}
       >
         <ReviewProvider>{children}</ReviewProvider>
       </body>

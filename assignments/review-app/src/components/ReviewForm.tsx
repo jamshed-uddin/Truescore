@@ -45,7 +45,7 @@ const ReviewForm = () => {
   };
 
   return (
-    <div className=" w-1/3 mx-auto p-3 shadow-md rounded-lg space-y-4 mt-4">
+    <div className="lg:w-1/3 mx-auto p-3 shadow-md rounded-lg space-y-4 mt-4">
       {/* rating stars */}
       <div>
         <div className="flex justify-center">
@@ -68,7 +68,7 @@ const ReviewForm = () => {
               ? "border-red-500 focus:outline-red-500"
               : "border-black focus:outline-indigo-500"
           }`}
-          placeholder="e.g. Booking.com"
+          placeholder="e.g. Othoba.com"
           onChange={onInputChange}
           value={review.shopName}
         />
@@ -91,12 +91,12 @@ const ReviewForm = () => {
           }`}
           placeholder={
             review.rating === 0
-              ? "Describe your experience with this company."
+              ? "Describe your experience with this shop."
               : review.rating < 3
-              ? "What went wrong? How can this company improve?"
+              ? "What went wrong? How can this shop improve?"
               : review.rating === 3
-              ? "What did you like or dislike? What is this company doing well, or how can they improve?"
-              : "What made your experience great? What is this company doing well?"
+              ? "What did you like or dislike? What is this shop doing well, or how can they improve?"
+              : "What made your experience great? What is this shop doing well?"
           }
           onChange={onInputChange}
           value={review.content}

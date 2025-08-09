@@ -2,14 +2,16 @@ import { StarIcon } from "@heroicons/react/24/outline";
 import React from "react";
 
 const RatingStars = ({
+  className,
   rating,
   onStarClick,
 }: {
+  className?: string;
   rating: number;
   onStarClick?: (ratingNum: number) => void;
 }) => {
   return (
-    <div className=" flex  gap-2">
+    <div className={` flex  gap-2 ${className}`}>
       {[1, 2, 3, 4, 5].map((num) => (
         <span
           key={num}

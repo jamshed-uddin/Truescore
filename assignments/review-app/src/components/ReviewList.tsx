@@ -1,15 +1,16 @@
 "use client";
 import { useReview } from "@/providers/ReviewProvider";
 import React from "react";
+import ReviewCard from "./ReviewCard";
 
 const ReviewList = () => {
   const { reviews } = useReview();
   return (
     <div>
       {reviews.length > 0 ? (
-        <div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
           {reviews.map((review) => (
-            <div key={review.id}>{review.shopName}</div>
+            <ReviewCard review={review} />
           ))}
         </div>
       ) : (
