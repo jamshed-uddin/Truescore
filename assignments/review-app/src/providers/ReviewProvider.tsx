@@ -17,7 +17,6 @@ export interface ReviewContextType {
   setReviews: React.Dispatch<React.SetStateAction<ReviewType[]>>;
   setEditingReviewId: React.Dispatch<React.SetStateAction<string>>;
   addReview: () => void;
-  editReview: () => void;
   deleteReview: (reviewId: string) => void;
 }
 
@@ -45,6 +44,7 @@ const ReviewProvider = ({ children }: { children: ReactNode }) => {
     localStorage.setItem("reviews", JSON.stringify(reviews));
   }, [reviews]);
 
+  //   edit or update review
   const addReview = () => {
     const newReview = {
       id: uuidv4(),
@@ -52,6 +52,7 @@ const ReviewProvider = ({ children }: { children: ReactNode }) => {
       ...review,
     };
 
+    // if there is review in review state for update
     if (editingReviewId) {
       const reviewsWithEditedReview = reviews.map((rev) =>
         rev.id === editingReviewId ? { ...rev, ...review } : rev
@@ -62,8 +63,11 @@ const ReviewProvider = ({ children }: { children: ReactNode }) => {
 
     setReviews((p) => [...p, newReview]);
   };
-  const editReview = () => {};
-  const deleteReview = (reviewId: string) => {};
+
+  const deleteReview = (reviewId: string) => {
+    const reviewsLeft = reviews.filter((rev) => rev.id !== reviewId);
+    setReviews(reviewsLeft);
+  };
   const value = {
     review,
     setReview,
@@ -71,7 +75,6 @@ const ReviewProvider = ({ children }: { children: ReactNode }) => {
     reviews,
     setReviews,
     addReview,
-    editReview,
     deleteReview,
   };
 

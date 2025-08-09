@@ -9,7 +9,7 @@ import {
 import { useReview } from "@/providers/ReviewProvider";
 
 const ReviewCard = ({ review }: { review: ReviewType }) => {
-  const { setReview, setEditingReviewId } = useReview();
+  const { setReview, setEditingReviewId, deleteReview } = useReview();
 
   const [openMenu, setOpenMenu] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -37,6 +37,12 @@ const ReviewCard = ({ review }: { review: ReviewType }) => {
   const setReviewToEdit = () => {
     setEditingReviewId(review.id as string);
     setReview(review);
+    closeMenu();
+  };
+
+  const deleteReviewHandler = () => {
+    deleteReview(review.id as string);
+    closeMenu();
   };
 
   return (
@@ -53,13 +59,13 @@ const ReviewCard = ({ review }: { review: ReviewType }) => {
           </button>
 
           {openMenu && (
-            <div className="flex items-center gap-2 absolute right-5 top-0 bg-gray-200 rounded-lg py-1 px-1.5">
+            <div className="flex items-center gap-3 absolute right-5 top-0 bg-gray-200 rounded-lg py-1 px-1.5">
               <button onClick={setReviewToEdit} className="cursor-pointer">
-                <PencilSquareIcon className="w-4 h-4 text-gray-500" />
+                <PencilSquareIcon className="w-4 h-4 text-gray-600" />
               </button>
 
-              <button className="cursor-pointer">
-                <TrashIcon className="w-4 h-4 text-gray-500" />
+              <button className="cursor-pointer" onClick={deleteReviewHandler}>
+                <TrashIcon className="w-4 h-4 text-gray-600" />
               </button>
             </div>
           )}
