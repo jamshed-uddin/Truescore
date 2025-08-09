@@ -71,7 +71,7 @@ const ReviewProvider = ({ children }: { children: ReactNode }) => {
       return;
     }
 
-    setReviews((p) => [...p, newReview]);
+    setReviews((p) => [newReview, ...p]);
   };
 
   const deleteReview = (reviewId: string) => {
