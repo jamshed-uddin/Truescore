@@ -38,7 +38,13 @@ const ReviewProvider = ({ children }: { children: ReactNode }) => {
       ? (JSON.parse(localStorage.getItem("reviews") as string) as ReviewType[])
       : [];
 
-    setReviews(localReviews);
+    const sortedReviews = localReviews?.sort(
+      (a, b) =>
+        new Date(b.date as string).getTime() -
+        new Date(a.date as string).getTime()
+    );
+
+    setReviews(sortedReviews);
     setLoading(false);
   }, []);
 
