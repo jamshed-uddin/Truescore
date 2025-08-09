@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 
 import { useReview } from "@/providers/ReviewProvider";
-import { StarIcon } from "@heroicons/react/24/outline";
 import RatingStars from "./RatingStars";
 
 const ReviewForm = () => {
