@@ -21,8 +21,6 @@ const ReviewForm = () => {
     setReview((p) => ({ ...p, [name]: value }));
   };
 
-  console.log(review);
-
   const onSubmit = () => {
     if (review.rating === 0) {
       return setErrors((p) => ({ ...p, rating: true }));
@@ -106,7 +104,16 @@ const ReviewForm = () => {
         )}
       </div>
 
-      <div className="flex justify-end gap-3 mt-2">
+      <div className="flex justify-end items-center gap-3 mt-2">
+        {review.id && (
+          <button
+            type="button"
+            onClick={() => setReview({ shopName: "", content: "", rating: 0 })}
+            className="bg-gray-300 text-black px-3 py-1.5 rounded-lg active:scale-95 cursor-pointer"
+          >
+            Cancel
+          </button>
+        )}
         <button
           type="button"
           onClick={onSubmit}

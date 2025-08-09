@@ -38,6 +38,10 @@ const ReviewCard = ({ review }: { review: ReviewType }) => {
     setEditingReviewId(review.id as string);
     setReview(review);
     closeMenu();
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   const deleteReviewHandler = () => {

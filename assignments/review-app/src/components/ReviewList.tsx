@@ -19,9 +19,6 @@ const ReviewList = () => {
     return true;
   });
 
-  console.log("search params ", params.get("search"));
-  console.log("search re", filteredReview);
-
   return (
     <div>
       <div className="flex items-center justify-between flex-wrap mb-5 lg:mb-3">
