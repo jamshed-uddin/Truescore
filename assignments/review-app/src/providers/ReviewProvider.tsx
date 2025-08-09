@@ -66,7 +66,9 @@ const ReviewProvider = ({ children }: { children: ReactNode }) => {
         rev.id === editingReviewId ? { ...rev, ...review } : rev
       );
 
-      return setReviews(reviewsWithEditedReview);
+      setReviews(reviewsWithEditedReview);
+      setEditingReviewId("");
+      return;
     }
 
     setReviews((p) => [...p, newReview]);
