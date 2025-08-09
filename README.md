@@ -1,5 +1,7 @@
 ## Truescore - Online shop experience review platform.
 
+Live site - [https://truescore-eight.vercel.app/](https://truescore-eight.vercel.app/)
+
 ### Tech stack
 
 - Next js
