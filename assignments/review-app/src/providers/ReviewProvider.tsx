@@ -15,6 +15,7 @@ export interface ReviewContextType {
   setReview: React.Dispatch<React.SetStateAction<ReviewType>>;
   reviews: ReviewType[];
   setReviews: React.Dispatch<React.SetStateAction<ReviewType[]>>;
+  setEditingReviewId: React.Dispatch<React.SetStateAction<string>>;
   addReview: () => void;
   editReview: () => void;
   deleteReview: (reviewId: string) => void;
@@ -28,6 +29,8 @@ const ReviewProvider = ({ children }: { children: ReactNode }) => {
     content: "",
     rating: 0,
   });
+
+  const [editingReviewId, setEditingReviewId] = useState("");
   const [reviews, setReviews] = useState<ReviewType[]>([]);
 
   useEffect(() => {
@@ -43,16 +46,28 @@ const ReviewProvider = ({ children }: { children: ReactNode }) => {
   }, [reviews]);
 
   const addReview = () => {
-    setReviews((p) => [
-      ...p,
-      { id: uuidv4(), date: new Date().toISOString(), ...review },
-    ]);
+    const newReview = {
+      id: uuidv4(),
+      date: new Date().toISOString(),
+      ...review,
+    };
+
+    if (editingReviewId) {
+      const reviewsWithEditedReview = reviews.map((rev) =>
+        rev.id === editingReviewId ? { ...rev, ...review } : rev
+      );
+
+      return setReviews(reviewsWithEditedReview);
+    }
+
+    setReviews((p) => [...p, newReview]);
   };
   const editReview = () => {};
   const deleteReview = (reviewId: string) => {};
   const value = {
     review,
     setReview,
+    setEditingReviewId,
     reviews,
     setReviews,
     addReview,
